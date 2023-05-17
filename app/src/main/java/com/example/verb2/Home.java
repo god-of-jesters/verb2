@@ -53,7 +53,7 @@ public class Home extends Fragment {
 
         SpinnerAdapter adapter = new SpinnerAdapter(inflater.getContext(), R.layout.item_s, items1);
         spinner2.setAdapter(adapter);
-        SpinnerAdapter adapter1 = new SpinnerAdapter(inflater.getContext(), R.layout.item_s, items2);
+        SpinnerAdapter adapter1 = new SpinnerAdapter(inflater.getContext(), R.layout.item_site, items2);
         spinner3.setAdapter(adapter1);
 
         View view = binding.getRoot();
