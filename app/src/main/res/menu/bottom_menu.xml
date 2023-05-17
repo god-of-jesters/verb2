@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home2"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/friends"
+        android:icon="@drawable/baseline_people_24"
+        android:title="Friends"/>
+
+    <item
+        android:id="@+id/leaders"
+        android:icon="@drawable/leader"
+        android:title="Leaders"/>
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/leader"
+        android:title="Profile"/>
+</menu>
