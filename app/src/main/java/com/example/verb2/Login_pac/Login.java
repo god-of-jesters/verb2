@@ -7,7 +7,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.verb.DB.Data;
+import com.example.verb2.DB.Data;
+import com.example.verb2.DB.User;
+import com.example.verb2.R;
 
 public class Login extends AppCompatActivity {
     @Override
@@ -29,6 +31,7 @@ public class Login extends AppCompatActivity {
                 ft.commit();
             }
         });
+
         sing_up_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

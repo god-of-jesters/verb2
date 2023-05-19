@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.verb2.DB.Data;
 import com.example.verb2.DB.RetrofitUserServ;
 import com.example.verb2.DB.User;
 import com.example.verb2.R;
@@ -41,11 +43,32 @@ public class Sing_up extends Fragment {
         Button button = view.findViewById(R.id.button2);
         EditText name = view.findViewById(R.id.editTextText);
         EditText pas = view.findViewById(R.id.editTextText2);
+        EditText pas1 = view.findViewById(R.id.editTextText3);
+        TextView name_cr = view.findViewById(R.id.textView6);
+        TextView pass_cr = view.findViewById(R.id.textView7);
+
+        name_cr.setVisibility(View.INVISIBLE);
+        pass_cr.setVisibility(View.INVISIBLE);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String bring_name = name.getText().toString();
+                String bring_pass = pas.getText().toString();
+                String bring_pass1 = pas1.getText().toString();
+                if(!Data.names.keySet().contains(bring_name) && bring_pass.equals(bring_pass1)){
+                    regestrated(bring_name, bring_pass);
+                }else{
+                    if (Data.names.keySet().contains(bring_name)){
+                        name_cr.setText("Такой пользователь уже есть");
+                        name_cr.setVisibility(View.VISIBLE);
+                    }else{
+                        pass_cr.setText("Пароль не совпадает");
+                        pass_cr.setVisibility(View.VISIBLE);
+                    }
+                }
+
                 System.out.println("zdfbnjilmopnjlmdpfvbmoopdfbm");
-                regestrated(name.getText().toString(), pas.getText().toString());
             }
         });
     }
