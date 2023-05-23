@@ -38,7 +38,7 @@ public class Friends extends Fragment {
         for (long i: DataUser.friends){
             System.out.println("Я зашел)");
             User user = DataUser.getUserById(i);
-            list.add(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.ic_launcher_foreground));
+            list.add(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.ic_launcher_background));
         }
 
         Adapter adapter = new Adapter(getContext(), list);
@@ -58,6 +58,10 @@ public class Friends extends Fragment {
                         User user = DataUser.getUserById(i);
                         list.add(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.ic_launcher_background));
                     }
+
+                    Adapter adapter = new Adapter(getContext(), list);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    recyclerView.setAdapter(adapter);
                 }
             }
         });
