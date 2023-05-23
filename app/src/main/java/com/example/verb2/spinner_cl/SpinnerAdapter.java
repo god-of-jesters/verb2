@@ -25,10 +25,10 @@ public class SpinnerAdapter extends ArrayAdapter<Item> {
     public View getView(int position, @NonNull View view, @NonNull ViewGroup viewGroup){
         View rawView = layoutInflater.inflate(R.layout.item_s, null, true);
         Item item = getItem(position);
-        TextView textView = rawView.findViewById(R.id.textView4);
-        TextView textView1 = rawView.findViewById(R.id.textView3);
-        textView1.setText(item.getName());
-        textView.setText(item.getOpis());
+        TextView textView = rawView.findViewById(R.id.textView10);
+        TextView textView1 = rawView.findViewById(R.id.textView11);
+        textView.setText(item.getName());
+        textView1.setText(item.getOpis());
         return rawView;
     }
 
@@ -39,10 +39,10 @@ public class SpinnerAdapter extends ArrayAdapter<Item> {
         }
 
         Item item = getItem(position);
-        TextView textView = view.findViewById(R.id.textView4);
-        TextView textView1 = view.findViewById(R.id.textView3);
-        textView1.setText(item.getName());
-        textView.setText(item.getOpis());
+        TextView textView = view.findViewById(R.id.textView10);
+        TextView textView1 = view.findViewById(R.id.textView11);
+        textView.setText(item.getName());
+        textView1.setText(item.getOpis());
         return view;
     }
 }

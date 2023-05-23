@@ -8,7 +8,9 @@ public class RetrofitUserServ {
     }
 
     public static UserApi getInstance() {
-        if (userApi == null) userApi = create();
+        if (userApi == null){
+            userApi = create();
+        }
         return userApi;
     }
 }

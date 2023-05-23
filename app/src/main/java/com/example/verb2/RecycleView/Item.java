@@ -20,11 +20,11 @@ public class Item {
         this.name = name;
     }
 
-    public String getEmail() {
+    public String getScore() {
         return score;
     }
 
-    public void setEmail(String score) {
+    public void setScore(String score) {
         this.score = score;
     }
 

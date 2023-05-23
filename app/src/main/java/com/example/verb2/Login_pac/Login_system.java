@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.verb2.DB.Data;
+import com.example.verb2.DB.DataUser;
 import com.example.verb2.DB.User;
 import com.example.verb2.MainActivity;
 import com.example.verb2.R;
@@ -39,13 +39,12 @@ public class Login_system extends Fragment {
         Button log_host = (Button) view.findViewById(R.id.log_host);
         EditText name = view.findViewById(R.id.editTextText);
         EditText pas = view.findViewById(R.id.editTextText2);
-
         log_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String n = name.getText().toString();
-                if(Data.names.keySet().contains(n) && Data.names.get(n).equals(pas.getText().toString())){
-                    for(User user1: Data.users){
+                if(DataUser.names.keySet().contains(n) && DataUser.names.get(n).equals(pas.getText().toString())){
+                    for(User user1: DataUser.users){
                         if(user1.getName().equals(n)){
                             user = user1;
                         }
@@ -72,4 +71,6 @@ public class Login_system extends Fragment {
     public static User getUser(){
         return user;
     }
+
+    public static void setUser(User user1){user = user1;}
 }

@@ -21,8 +21,9 @@
         android:label="fragment_leaders"
         tools:layout="@layout/fragment_leaders" />
     <fragment
-        android:id="@+id/profile"
+        android:id="@+id/profile2"
         android:name="com.example.verb2.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
 </navigation>

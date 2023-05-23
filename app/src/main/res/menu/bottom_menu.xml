@@ -16,7 +16,7 @@
         android:title="Leaders"/>
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profile2"
         android:icon="@drawable/leader"
         android:title="Profile"/>
 </menu>

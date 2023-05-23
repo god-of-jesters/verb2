@@ -6,7 +6,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 public class RetrofitSrv {
         private static Retrofit retrofit;
 
-        private static final String BASE_URL = "http://192.168.31.131:8080";
+        private static final String BASE_URL = "http://192.168.1.103:8080";
         private static Retrofit create() {
             return new Retrofit.Builder()
                     .addConverterFactory(MoshiConverterFactory.create())

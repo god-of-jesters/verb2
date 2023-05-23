@@ -1,7 +1,7 @@
 package com.example.verb2.Login_pac;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.verb2.DB.Data;
-import com.example.verb2.DB.RetrofitUserServ;
-import com.example.verb2.DB.User;
+import com.example.verb2.DB.DataUser;
+import com.example.verb2.MainActivity;
 import com.example.verb2.R;
 import com.example.verb2.databinding.FragmentSingUpBinding;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Sing_up extends Fragment {
     FragmentSingUpBinding binding;
@@ -56,10 +51,13 @@ public class Sing_up extends Fragment {
                 String bring_name = name.getText().toString();
                 String bring_pass = pas.getText().toString();
                 String bring_pass1 = pas1.getText().toString();
-                if(!Data.names.keySet().contains(bring_name) && bring_pass.equals(bring_pass1)){
-                    regestrated(bring_name, bring_pass);
+                if(!DataUser.names.keySet().contains(bring_name) && bring_pass.equals(bring_pass1)){
+                    DataUser.regestrated(bring_name, bring_pass);
+                    Login_system.setUser(DataUser.getUser(bring_name));
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
                 }else{
-                    if (Data.names.keySet().contains(bring_name)){
+                    if (DataUser.names.keySet().contains(bring_name)){
                         name_cr.setText("Такой пользователь уже есть");
                         name_cr.setVisibility(View.VISIBLE);
                     }else{
@@ -69,20 +67,6 @@ public class Sing_up extends Fragment {
                 }
 
                 System.out.println("zdfbnjilmopnjlmdpfvbmoopdfbm");
-            }
-        });
-    }
-
-    public void regestrated(String name, String passsword){
-
-        RetrofitUserServ.getInstance().add(new User(0, name, passsword, 0)).enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                Log.d("СОЗДААААААААЛ", "СОЗДААААААААЛ");
-            }
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Log.d("НЕЕЕЕЕЕЕ СОЗДААААААААЛ", "НЕЕЕЕЕЕЕ СОЗДААААААААЛ");
             }
         });
     }

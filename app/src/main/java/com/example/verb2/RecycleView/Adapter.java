@@ -30,7 +30,7 @@ public class Adapter extends RecyclerView.Adapter<MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name.setText(items.get(position).getName());
-        holder.score.setText(items.get(position).getEmail());
+        holder.score.setText(items.get(position).getScore());
         holder.imageView.setImageResource(items.get(position).getImage());
     }
 

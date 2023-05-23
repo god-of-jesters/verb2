@@ -7,8 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.verb2.DB.Data;
-import com.example.verb2.DB.User;
+import com.example.verb2.DB.DataUser;
 import com.example.verb2.R;
 
 public class Login extends AppCompatActivity {
@@ -16,7 +15,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Thread thread = new Thread(new Data());
+        Thread thread = new Thread(new DataUser());
         thread.start();
 
         Button login = findViewById(R.id.button4);
