@@ -68,7 +68,7 @@ public class Friends extends Fragment {
                         }
                     }
 
-                    recyclerView.getAdapter().notifyItemInserted(list.size());
+                    recyclerView.getAdapter().notifyItemInserted(list.size()-1);
                 }
             }
         });

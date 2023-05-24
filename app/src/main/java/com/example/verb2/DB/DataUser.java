@@ -34,7 +34,7 @@ public class DataUser implements Runnable {
             while (true){
                 takeName();
                 getFriend();
-                update();
+//                update();
                 sleep(5000);
             }
         } catch (InterruptedException e) {
@@ -60,10 +60,11 @@ public class DataUser implements Runnable {
 
     public static void update(){
         if (Login_system.getUser() != null){
-            RetrofitUserServ.getInstance().delete(Integer.toString(Login_system.getUser().getId())).enqueue(new Callback<ResponseBody>() {
+            System.out.println(getUser(Login_system.getUser().getName()).getId());
+            RetrofitUserServ.getInstance().delete(Integer.toString(getUser(Login_system.getUser().getName()).getId())).enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    System.out.println("Удачно");
+
                 }
 
                 @Override
@@ -71,6 +72,7 @@ public class DataUser implements Runnable {
                     System.out.println("Не Удачно");
                 }
             });
+
             RetrofitUserServ.getInstance().update(Login_system.getUser()).enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
@@ -140,7 +142,7 @@ public class DataUser implements Runnable {
                 return user;
             }
         }
-        return new User(0, name, "1", 0);
+        return null;
     }
 
     public static User getUserById(long id){

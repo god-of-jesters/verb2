@@ -8,29 +8,33 @@
 
     <TextView
         android:id="@+id/time"
-        android:layout_width="140dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/spin"
         android:gravity="center"
-        android:text="Пример номер: 12"
+        android:text="Пример номер: 10"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/correct"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/correct"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="132dp"
+        android:layout_width="150dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="136dp"
         android:background="@drawable/spin"
         android:gravity="center"
         android:text="Правильно:0"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.675"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
 
     <EditText
         android:id="@+id/editTextText4"
@@ -41,6 +45,7 @@
         android:gravity="center"
         android:hint="Ответ"
         android:inputType="number"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -66,6 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ответить"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

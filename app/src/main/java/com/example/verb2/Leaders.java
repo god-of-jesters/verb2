@@ -39,7 +39,9 @@ public class Leaders extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.re);
 
         for (User user: DataUser.getLeaders()){
-            items.contains(new ItemLeader(user.getName(), Integer.toString(user.getScore()), Integer.toString(i), R.drawable.g));
+            if (items.contains(new ItemLeader(user.getName(), Integer.toString(user.getScore()), Integer.toString(i), R.drawable.g))){
+                items.add(new ItemLeader(user.getName(), Integer.toString(user.getScore()), Integer.toString(i), R.drawable.g));
+            }
             i++;
         }
 
