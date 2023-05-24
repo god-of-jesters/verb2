@@ -57,7 +57,9 @@ public class Friends extends Fragment {
             public void onClick(View v) {
                 if (name_ed.getText().toString() != ""){
                     String name = name_ed.getText().toString().trim();
-                    DataFriend.writeFriend(Login_system.getUser().getId(), DataUser.getUser(name).getId());
+                    if (Login_system.getUser().getId() != -1){
+                        DataFriend.writeFriend(Login_system.getUser().getId(), DataUser.getUser(name).getId());
+                    }
 
                     for (long i: DataUser.friends){
                         if (i != 0){
