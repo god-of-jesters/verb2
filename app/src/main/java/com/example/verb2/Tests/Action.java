@@ -40,7 +40,6 @@ public class Action extends AppCompatActivity {
 
         switch (action){
             case "Скорость":
-                System.out.println("Я даун!");
                 act = "Скорость";
                 Speed_test speed_test = new Speed_test();
                 speed_test.setArguments(args1);
@@ -54,7 +53,6 @@ public class Action extends AppCompatActivity {
                 break;
             case "Правильность":
                 act = "Правильность";
-                System.out.println("Я конченное чмо!");
                 Correct_test correct_test = new Correct_test();
                 correct_test.setArguments(args1);
                 ft.replace(R.id.fragmentContainerView2, correct_test, null);

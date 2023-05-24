@@ -36,9 +36,14 @@ public class Friends extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.re);
 
         for (long i: DataUser.friends){
-            System.out.println("Я зашел)");
-            User user = DataUser.getUserById(i);
-            list.add(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.ic_launcher_background));
+            if (i != 0){
+                User user = DataUser.getUserById(i);
+                if (!list.contains(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.g))){
+                    list.add(new Item("Имя: " + user.getName(),"Очки: " + String.valueOf(user.getScore()), R.drawable.g));
+                }else{
+                    System.out.println("Врет!");
+                }
+            }
         }
 
         Adapter adapter = new Adapter(getContext(), list);
@@ -55,13 +60,15 @@ public class Friends extends Fragment {
                     DataFriend.writeFriend(Login_system.getUser().getId(), DataUser.getUser(name).getId());
 
                     for (long i: DataUser.friends){
-                        User user = DataUser.getUserById(i);
-                        list.add(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.ic_launcher_background));
+                        if (i != 0){
+                            User user = DataUser.getUserById(i);
+                            if (!list.contains(new Item(user.getName(), String.valueOf(user.getScore()), R.drawable.g))){
+                                list.add(new Item("Имя: " + user.getName(),"Очки: " + String.valueOf(user.getScore()), R.drawable.g));
+                            }
+                        }
                     }
 
-                    Adapter adapter = new Adapter(getContext(), list);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    recyclerView.setAdapter(adapter);
+                    recyclerView.getAdapter().notifyItemInserted(list.size());
                 }
             }
         });

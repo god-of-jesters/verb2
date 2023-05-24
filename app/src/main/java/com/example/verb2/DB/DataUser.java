@@ -10,10 +10,12 @@ import com.example.verb2.Login_pac.Login_system;
 import com.example.verb2.spinner_cl.Item;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,7 +23,7 @@ import retrofit2.Response;
 public class DataUser implements Runnable {
     private static List<Item> items1;
     private static List<Item> items2;
-    static List<Integer> ids = new ArrayList<>();
+    public static List<Integer> ids = new ArrayList<>();
     public static List<User> users = new ArrayList<User>();
     public static Map<String, String> names = new HashMap<>();
     public static List<Long> friends = new ArrayList<>();
@@ -32,6 +34,7 @@ public class DataUser implements Runnable {
             while (true){
                 takeName();
                 getFriend();
+                update();
                 sleep(5000);
             }
         } catch (InterruptedException e) {
@@ -53,6 +56,34 @@ public class DataUser implements Runnable {
                 Log.d("AAAAAAAA", String.valueOf(t));
             }
         });
+    }
+
+    public static void update(){
+        if (Login_system.getUser() != null){
+            RetrofitUserServ.getInstance().delete(Integer.toString(Login_system.getUser().getId())).enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    System.out.println("Удачно");
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    System.out.println("Не Удачно");
+                }
+            });
+            RetrofitUserServ.getInstance().update(Login_system.getUser()).enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    System.out.println("Удачно");
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    System.out.println("Не Удачно");
+                }
+            });
+        }
+
     }
 
     public static void writeData(Response<List<User>> response){
@@ -99,7 +130,6 @@ public class DataUser implements Runnable {
         items2.add(new Item("Умножение", "Тренировка умножения"));
         items2.add(new Item("Деление", "Тренировка деления"));
         items2.add(new Item("Извлечение корня", "Извлечение квадратного корня"));
-
         return (ArrayList<Item>) items2;
     }
 
@@ -149,4 +179,29 @@ public class DataUser implements Runnable {
         });
     }
 
+    public static long getMax(){
+        long max = -2;
+        for (long i: ids){
+            if (i>max) max = i;
+        }
+        return max;
+    }
+
+    public static List<User> getLeaders(){
+        List<User> led = new ArrayList<>();
+        List<Integer> score = new ArrayList<>();
+        for(User user: users){
+            score.add(user.getScore());
+        }
+        Collections.sort(score);
+        Collections.reverse(score);
+        for (int i: score){
+            for (User user: users){
+                if (user.getScore() == i && !led.contains(user)){
+                    led.add(user);
+                }
+            }
+        }
+        return led;
+    }
 }

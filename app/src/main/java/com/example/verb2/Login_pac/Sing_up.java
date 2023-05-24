@@ -1,5 +1,7 @@
 package com.example.verb2.Login_pac;
 
+import static java.util.Collections.max;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,9 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.verb2.DB.DataUser;
+import com.example.verb2.DB.User;
 import com.example.verb2.MainActivity;
 import com.example.verb2.R;
 import com.example.verb2.databinding.FragmentSingUpBinding;
+
+import java.util.ArrayList;
 
 public class Sing_up extends Fragment {
     FragmentSingUpBinding binding;
@@ -53,7 +58,8 @@ public class Sing_up extends Fragment {
                 String bring_pass1 = pas1.getText().toString();
                 if(!DataUser.names.keySet().contains(bring_name) && bring_pass.equals(bring_pass1)){
                     DataUser.regestrated(bring_name, bring_pass);
-                    Login_system.setUser(DataUser.getUser(bring_name));
+                    System.out.println("IDDDDDDDDDDDD" + DataUser.getUser(bring_name).getId());
+                    Login_system.setUser(new User((int) DataUser.getMax(), bring_name, bring_pass, 0));
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);
                 }else{
@@ -65,8 +71,6 @@ public class Sing_up extends Fragment {
                         pass_cr.setVisibility(View.VISIBLE);
                     }
                 }
-
-                System.out.println("zdfbnjilmopnjlmdpfvbmoopdfbm");
             }
         });
     }
