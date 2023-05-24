@@ -17,13 +17,14 @@ import com.example.verb2.Tests.Action;
 import com.example.verb2.databinding.FragmentHomeBinding;
 import com.example.verb2.spinner_cl.Item;
 import com.example.verb2.spinner_cl.SpinnerAdapter;
+import com.example.verb2.spinner_cl.SpinnerAdapterLit;
 
 import java.util.List;
 public class Home extends Fragment {
     private FragmentHomeBinding binding;
     List<Item> items1 = DataUser.takeItems1();
     List<Item> items2 = DataUser.takeItems2();
-
+    List<Item> items3 = DataUser.takeItems3();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +45,7 @@ public class Home extends Fragment {
         spinner2.setAdapter(adapter);
         SpinnerAdapter adapter1 = new SpinnerAdapter(inflater.getContext(), R.layout.item_site, items2);
         spinner3.setAdapter(adapter1);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(container.getContext(),
-                R.array.difficulty_select, android.R.layout.simple_spinner_item);
+        SpinnerAdapterLit adapter2 = new SpinnerAdapterLit(inflater.getContext(), R.layout.item_site, items3);
         spinner1.setAdapter(adapter2);
 
 
@@ -55,10 +55,10 @@ public class Home extends Fragment {
                 Intent intent = new Intent(getContext(), Action.class);
                 Item action = (Item) spinner2.getSelectedItem();
                 Item style = (Item) spinner3.getSelectedItem();
-                String hard = (String) spinner1.getSelectedItem();
+                Item hard = (Item) spinner1.getSelectedItem();
                 intent.putExtra("Action", action.getName());
                 intent.putExtra("Style", style.getName());
-                intent.putExtra("Hard", hard);
+                intent.putExtra("Hard", hard.getName());
                 startActivity(intent);
             }
         });

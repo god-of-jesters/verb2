@@ -23,6 +23,7 @@ import retrofit2.Response;
 public class DataUser implements Runnable {
     private static List<Item> items1;
     private static List<Item> items2;
+    private static List<Item> items3;
     public static List<Integer> ids = new ArrayList<>();
     public static List<User> users = new ArrayList<User>();
     public static Map<String, String> names = new HashMap<>();
@@ -133,6 +134,14 @@ public class DataUser implements Runnable {
         items2.add(new Item("Деление", "Тренировка деления"));
         items2.add(new Item("Извлечение корня", "Извлечение квадратного корня"));
         return (ArrayList<Item>) items2;
+    }
+
+    public static ArrayList<Item> takeItems3(){
+        items3 = new ArrayList<Item>();
+        items3.add(new Item("1", ""));
+        items3.add(new Item("2", ""));
+        items3.add(new Item("3", ""));
+        return (ArrayList<Item>) items3;
     }
 
     public static User getUser(String name){
